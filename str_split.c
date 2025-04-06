@@ -24,12 +24,10 @@ size_t	ft_strlen(char *str)
 
 char	**str_split(char *str)
 {
-	size_t	j;
 	char	**table;
 
 	if (!str)
 		return (NULL);
-	j = 0;
 	table = (char **)malloc(sizeof(char *) * (char_count(str) + 1));
 	if (!table)
 	{
@@ -37,12 +35,7 @@ char	**str_split(char *str)
 		return (0);
 	}
 	if (storing_in_table(table, str))
-	{
-		while (j > 0)
-			free(table[--j]);
-		free(table);
 		return (NULL);
-	}
 	return (table);
 }
 
@@ -94,6 +87,7 @@ size_t	ft_strlcpy(char *dest, char *src, size_t len)
 	return (src_len);
 }
 
+//still needs space implementations
 int	storing_in_table(char **table, char *str)
 {
 	size_t	i;
@@ -107,7 +101,7 @@ int	storing_in_table(char **table, char *str)
 	character = str;
 	while (str[i])
 	{
-		if ( i == ' ' || (i > 0 && (i % 8 == 0)))
+		if (str[i] == ' ' || (i > 0 && (i % 8 == 0)))
 		{
 			table[j++] = word_malloc(character, length);
 			length = 0;

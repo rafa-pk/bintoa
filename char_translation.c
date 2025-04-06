@@ -12,42 +12,52 @@
 
 #include "bintoa.h"
 
-char	**char_translation(char **table)
+char	*char_translation(char **table)
 {
-	size_t	row;
+	size_t	ix;
+	size_t	len;
+	char	*txt_str;
 
-	row = 0;
-	while (table[j])
+	ix = 0;
+	len = 0;
+	while (table[len])
+		len++;
+	txt_str = (char *)malloc((sizeof(char) * len) + 1);
+	while (table[ix])
 	{
-		table[j] = bin_to_char(table[j]);
-		j++;
+		txt_str[ix] = bin_to_char(table[ix]);
+		ix++;
 	}
-	table[j] = NULL;
-	return (table);
+	txt_str[ix] = '\0';
+	return (txt_str);
 }
 
 char	bin_to_char(char *str)
 {
 	size_t	i;
-	char	power;
 	char	character;
 
-	i = 7;
-	power = 2
+	i = 0;
 	character = 0;
 	while (i < 8)
 	{
+		character <<= 1;
 		if (str[i] == '1')
-			character += power;
-		power *= 2;
+			character += 1;
 		i++;
 	}
 	return (character);
 }
-
+/*
 int	main(void)
 {
-	char	**table[] = { "00110011", "10010011", "01100101", "01000010", NULL};
+	char	*table[] = { "01001000", "01100101", "01101100", "01101100", "01101111", NULL};
+	char	*translated = char_translation(table);
 
-	printf("Translation:")
+	if (!translated)
+		return (1);
+	printf("Translation: %s\n", translated);
+	free (translated);
+	return (0);
 }
+*/

@@ -26,5 +26,7 @@ char	*word_malloc(char *str, size_t length);
 int		storing_in_table(char **table, char *str);
 size_t	ft_strlen(char *str);
 size_t	ft_strlcpy(char *dest, char *src, size_t len);
+char	*char_translation(char **table);
+char	bin_to_char(char *str);
 
 #endif

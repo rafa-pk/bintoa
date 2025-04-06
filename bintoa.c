@@ -15,20 +15,38 @@
 char	*bintoa(char *binary_str)
 {
 	char	*text_str;
+	char	**table;
+	size_t	j;
 
 	text_str = NULL;
+	j = 0;
 	if (!binary_str)
 		return (NULL);
 	while (*binary_str)
 	{
-		if (*binary_str != "0" || *binary_str != "1" || *binary_str != " ")
+		if (*binary_str != '0' || *binary_str != '1' || *binary_str != ' ')
 			return (NULL);
-		str_split(binary_str, 8);
-		char_translation(table);
-			//taking care of numbers, letters, special characters, non-printables etc...
-		//storing it as replacing value within table
-		text_str = ft_strjoin(text_str, table[ch]);
-		str++;
+		binary_str++;
 	}
+	table = str_split(binary_str);
+	if (!table)
+		return (NULL);
+	text_str = char_translation(table);
+	while (j > 0)
+		free(table[--j]);
+	free(table);
 	return (text_str);
+}
+
+int	main(void)
+{
+	char	*binary_str = "0011000100110110011001100110010011010010";
+	char	*text_str = bintoa(binary_str);
+
+	if (!text_str)
+		return (1);
+	printf("Binary string: %s\n", binary_str);
+	printf("Translation: %s\n", text_str);
+	free(text_str);
+	return (0);
 }

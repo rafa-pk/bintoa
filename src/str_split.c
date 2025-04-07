@@ -117,7 +117,6 @@ int	storing_in_table(char **table, char *str)
 	table[j] = NULL;
 	return (0);
 }
-
 /*
 int	main()
 {

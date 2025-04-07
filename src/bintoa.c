@@ -14,9 +14,8 @@
 
 char	*bintoa(char *binary_str)
 {
-	
-	size_t	i;
 	size_t	j;
+	size_t	i;
 	char	*text_str;
 	char	**table;
 
@@ -27,7 +26,8 @@ char	*bintoa(char *binary_str)
 		return (NULL);
 	while (binary_str[i])
 	{
-		if (binary_str[i] != '0' && binary_str[i] != '1' && binary_str[i] != ' ')
+		if (binary_str[i] != '0' && binary_str[i] != '1'
+			&& binary_str[i] != ' ')
 			return (NULL);
 		i++;
 	}
@@ -40,7 +40,7 @@ char	*bintoa(char *binary_str)
 	free(table);
 	return (text_str);
 }
-
+/*
 int	main(void)
 {
 	char	*binary_str = "010010000110010101101100011011000110111100100000010101110110111101110010011011000110010000100001";
@@ -55,4 +55,4 @@ int	main(void)
 	printf("Translation: %s\n", text_str);
 	free(text_str);
 	return (0);
-}
+}*/
